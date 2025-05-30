@@ -1,0 +1,33 @@
+/* div{
+    font-size: 20px;
+}
+html{
+    font-size: 50px;
+}
+p{
+    font-size: 1em;
+    width: 200px;
+
+} */
+
+
+/* ///view-port */
+/* 
+div{
+    background-color: red;
+    width: 100vw;
+    height: 100vh;
+} */
+
+/* percentage */
+
+div{
+    width: 50vw;
+    height: 500px;
+    background-color: green;
+}
+.description{
+    width: 70%;
+    height: 50%;
+    background-color: red;
+}

@@ -1,0 +1,19 @@
+/* pseudo - class */
+
+/* .title{
+    color: purple;
+}
+.title:hover{
+    color: gray;
+} */
+
+/* pseudo - element */
+.title{
+    background-color: yellowgreen;
+}
+.title::after{
+    content: "to the class";
+}
+.title::before{
+    content: "hello,";
+}

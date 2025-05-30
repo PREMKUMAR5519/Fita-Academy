@@ -1,0 +1,16 @@
+h1{
+    background-color: gray;
+    color: purple;
+}
+.firstdiv{
+    background-color: maroon;
+    color: white;
+}
+#thirddiv{
+    background-color: green;
+    border: 3px solid yellow;
+}
+span{
+    display: block;
+    background-color: purple;
+}

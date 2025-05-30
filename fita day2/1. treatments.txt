@@ -1,0 +1,7 @@
+1. treatments
+2. doctorslist
+3. packages
+4. contact details 
+ emergency phone number
+ enquiry phone number
+ mail id 
