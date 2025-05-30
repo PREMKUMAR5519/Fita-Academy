@@ -1,0 +1,20 @@
+.element:nth-child(odd){
+    background-color: rebeccapurple;
+    width: 300px;
+    height: 300px;
+}
+.element:nth-child(even){
+    background-color: rgb(51, 153, 75);
+     width: 300px;
+    height: 300px;
+}
+.container{
+    display: flex;
+ flex-direction: column;
+
+}
+.element{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+}

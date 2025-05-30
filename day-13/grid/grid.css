@@ -1,0 +1,18 @@
+.container{
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr 2fr 2fr;
+    grid-template-rows: 100px 300px;
+}
+.element:nth-child(1){
+    background-color: gray;
+}
+.element:nth-child(2){
+    background-color: rgb(138, 34, 34);
+}
+.element:nth-child(3){
+    background-color: rgb(24, 207, 11);
+}
+
+.element:nth-child(4){
+    background-color: rgb(59, 28, 195);
+}
