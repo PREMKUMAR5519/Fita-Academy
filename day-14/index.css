@@ -1,0 +1,101 @@
+/* .container{
+    background-color: lightblue;
+    height: 100px;
+    overflow: hidden;
+} */
+
+
+/* 
+p{
+    font-size: 25px; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    font-style: normal; 
+
+
+} */
+
+/* p{
+   font-size: 30px; 
+}
+@media (max-width:500px) {
+    p{
+        font-size: 10px;
+        color: white;
+
+    }
+    bodY{
+        background-color: black;
+    }
+}
+@media (max-width:300px){
+   p{
+    font-size: 8px;
+
+   }
+   body{
+    background-color: gray;
+   }
+} */
+ 
+/* .title{
+   /* letter-spacing: 3px;  */
+   /* word-spacing:310px; */
+   /* text-decoration: line-through;
+    */
+    /* text-decoration: underline; */
+    /* text-align: center;
+    background-color: lightcoral;
+    width: 50%; 
+    
+}*/
+
+
+
+
+/* .News-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+h1{
+    text-align: center;
+}
+footer{
+    background-color: gray;
+    height: 100px;
+    color: white;
+    text-align:center;
+    margin-top: 50px;
+} */
+
+
+.Container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+            "header header"
+            "sports tech"
+             "footer footer";
+}
+
+
+h1{
+    grid-area: header;
+    background-color: red;
+    text-align: center;
+}
+.sports{
+    grid-area: sports;
+    text-align: center;
+}
+.tech{
+    grid-area: tech;
+}
+footer{
+    grid-area: footer;
+    background-color: gray;
+    text-align: center;
+}
+.cinema{
+    grid-area: cinema;
+}
