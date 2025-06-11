@@ -1,0 +1,11 @@
+.box{
+    width: 100px;
+    height: 100px;
+}
+.box_container{
+    height: 700px;
+    background-color: black;
+}
+body{
+    height: 200vh;
+}
