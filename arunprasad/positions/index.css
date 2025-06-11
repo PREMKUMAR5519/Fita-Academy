@@ -1,0 +1,40 @@
+.container{
+    width: 100%;
+    height: 200vh;
+    background-color: gray;
+        position: relative;
+
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.containerin{
+    width: 100%;
+    height: 500px;
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.circle{
+    width: 150px;
+    height: 150px;
+    background-color: purple;
+    border: 2px solid red;
+
+}
+.circle:nth-child(2){
+    position: fixed;
+    left: 0;
+    top: 200px;
+}
+.circle:nth-child(3){
+    position: sticky;
+    top: 0;
+}
+.circle:nth-child(4){
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
