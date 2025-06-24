@@ -30,16 +30,18 @@ let Newbody = document.getElementsByTagName('body')
   let FirstPara = document.querySelectorAll('p')[0]
   let secondPara = document.querySelectorAll('p')[1]
   let background = document.querySelector('div')
-
+  let FirstButton = document.getElementById('firstbutton')
 
 function changeTheme (){
 
   FirstPara.style.color ="white"
   secondPara.style.color ="white"
   background.style.backgroundColor= "black"
+  FirstButton.style.backgroundColor = "transparent"
+  FirstButton.style.border = "1px solid white"
+  FirstButton.style.color ="white"
 
 }
-
 
 function removeTheme (){
 
