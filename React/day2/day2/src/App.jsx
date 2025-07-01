@@ -1,20 +1,22 @@
+import React from 'react'
+import Navbar from './Navbar'
+import Left from './Left'
 
-import Child from './Child'
-
-function App(){
-
-
-  let a = 55;
-  return(
-    <div>
-      hello
-      <div>
-        hi
+function App() {
+  return (
+  <div>
+     <div style={{position:"fixed",top:"0",width:"100%",background:"blue"}}>
+       <Navbar/>
+     </div>
+     <div style={{display:"flex",flexDirection:"row"}}>
+      <div style={{backgroundColor:"red",width:"10vw",height:"100vh"}}>
+       <Left/>
       </div>
-      <div>
-        <Child  fruit="apple" color="red" numeric={a}/>
+      <div  style={{backgroundColor:"gray",width:"90vw",height:"100vh"}}>
+
       </div>
-    </div>
+     </div>
+  </div>
   )
 }
 
