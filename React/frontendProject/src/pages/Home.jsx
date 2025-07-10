@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '../styles/Home.css'
 import {useNavigate} from 'react-router-dom'
-function Home({ productData,setSingleProdcut }) {
+import { DataContext } from '../DataContext'
 
+function Home( ) {
+
+    const{productData,setProductData,setSingleProdcut} = useContext(DataContext)
 
     const navigate = useNavigate()
   function handleclick(product){
   setSingleProdcut(product)
-    navigate('/product-details')
+    navigate(`product-details/${product.title}`)
   }
-
     return (
         <div className='home-main'>
             {productData?.map((element, index) => (
