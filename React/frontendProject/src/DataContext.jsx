@@ -8,6 +8,7 @@ export function DataProvider({ children }) {
 
     const [productData, setProductData] = useState()
     const [singleProduct,setSingleProdcut] = useState()
+    const [cart,setCart] = useState([])
     //data export 
 
 
@@ -21,7 +22,7 @@ export function DataProvider({ children }) {
     }, [])
 
     return (
-        <DataContext.Provider value={{ productData, setProductData,singleProduct,setSingleProdcut }}>
+        <DataContext.Provider value={{ productData, setProductData,singleProduct,setSingleProdcut,cart,setCart }}>
             {children}
         </DataContext.Provider>
 

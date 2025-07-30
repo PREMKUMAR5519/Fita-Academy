@@ -1,0 +1,17 @@
+.sp-main{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+.left{
+    width: 50%;
+}
+.left>img{
+    width: 100%;
+    height: aut0;
+}
+.right{
+    width: 50%;
+    padding-top: 50px;
+}

@@ -10,7 +10,7 @@ function Home( ) {
     const navigate = useNavigate()
   function handleclick(product){
   setSingleProdcut(product)
-    navigate(`product-details/${product.title}`)
+    navigate(`product-details/${product.id}`)
   }
     return (
         <div className='home-main'>
