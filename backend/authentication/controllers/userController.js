@@ -45,4 +45,38 @@ const userLogin = async(req,res)=>{
 }
 
 
-module.exports = {registerUser,userLogin}
+async function checkAuth(req,res,next){
+
+    const token = req.headers['authorization'];
+    if(!token){
+        return res.status(401).json({ message: 'unauthorized token' });
+    }
+    try {
+        const decode = jwt.verify(token,process.env.JWT_SECRET);
+        console.log(decode)
+        if(decode.email){
+            //successfully verified
+            req.user = decode;
+
+           next()
+        }
+        else{
+            return res.status(401).json({ message: 'invalid token' });
+        }
+
+    } catch (error) {
+        res.json({ message: 'Error verifying token', error: error.message });
+    }
+}
+
+
+//api function
+async function getData(req, res) {
+    const staffdata = await user.find()
+    res.json(staffdata)
+
+    res.json({user:req.user});
+}
+
+
+module.exports = {registerUser,userLogin,getData,checkAuth}
