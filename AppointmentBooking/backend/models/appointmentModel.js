@@ -31,6 +31,6 @@ const userSchema = new mongoose.Schema({
 },{timestamps: true});
 
 
-const User = mongoose.model('appointments',userSchema)
+const Appointment = mongoose.model('appointments',userSchema)
 
-module.exports = User;
+module.exports = Appointment;
