@@ -42,4 +42,11 @@ async function userLogin(req,res){
     }
 }
 
-module.exports ={userLogin,userRegister}
+async function test(params) {
+    try {
+        res.json("working")
+    } catch (error) {
+        
+    }
+}
+module.exports ={userLogin,userRegister,test}

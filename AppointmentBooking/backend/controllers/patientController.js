@@ -26,6 +26,30 @@ async function getAllPatients(req, res) {
   } catch (error) {
     res.json({ message: 'Error in fetching patients', error: error.message });
   }
-
 }
-module.exports = { createPatient,getAllPatients };
+
+
+//get particular patient data
+async function getParticularPatient(req,res){
+   const {email}= req.body;
+   try {
+    const patient = await Patient.findOne({email})
+    res.json(patient)
+   } catch (error) {
+      res.json({message:"Error in fetching patient"})
+   }
+}
+
+//delete particular doctor data 
+async function deletePatient(req,res){
+  const {id} = req.params;
+  try {
+    const deletePat = await Patient.findByIdAndDelete({_id:id});
+    res.json(deletePat)
+  } catch (error) {
+          res.json({message:"Error in deleting patient"})
+
+  }
+}
+
+module.exports = { createPatient,getAllPatients,getParticularPatient,deletePatient };

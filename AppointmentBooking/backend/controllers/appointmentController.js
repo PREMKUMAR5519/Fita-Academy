@@ -39,5 +39,25 @@ async function getAppointment(req,res){
     res.json({ message: 'Error in fetching appointment', error: error.message });
   }
 }
+//update status
+async function updateStatus(req,res){
+  const {id} = req.params
+  try {
+    const updateAppointment = await Appointment.findByIdAndUpdate({_id:id},{status:"completed"})
+    res.json(updateAppointment)
+  } catch (error) {
+    res.json('something went wrong')
+  }
+}
 
-module.exports ={createAppointment,getAllAppointments,getAppointment}
+//delete appointmet
+async function deleteAppointment(req,res){
+  const {id} = req.params;
+  try {
+    const deleteAppoitment = await Appointment.findByIdAndDelete({_id:id})
+    res.json({message:"appointment deleted successfully"})
+  } catch (error) {
+    res.json('something went wrong')
+  }
+}
+module.exports ={createAppointment,getAllAppointments,getAppointment,updateStatus,deleteAppointment}

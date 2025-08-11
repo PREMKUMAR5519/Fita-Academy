@@ -28,4 +28,38 @@ async function getAllDoctors(req, res) {
 
 }
 
-module.exports = { createDoctor,getAllDoctors };
+//get particular doctor data
+async function getParticularDoctor(req,res){
+   const {email}= req.body;
+   try {
+    const doctor = await Doctor.findOne({email})
+    res.json(doctor)
+   } catch (error) {
+      res.json({message:"Error in fetching doctors"})
+   }
+}
+
+//delete particular doctor data 
+async function deleteDoctor(req,res){
+  const {id} = req.params;
+  try {
+    const deleteDoc = await Doctor.findByIdAndDelete({_id:id});
+    res.json(deleteDoc)
+  } catch (error) {
+          res.json({message:"Error in deleting doctor"})
+
+  }
+}
+async function updateAvailable(req,res){
+  const {id} = req.params;
+  const {availability} = req.body
+  try {
+    const updateDoc = await Doctor.findByIdAndUpdate({_id:id},{availability})
+    res.json(updateDoc)
+  } catch (error) {
+              res.json({message:"Error in updating doctor availability"})
+
+  }
+}
+
+module.exports = { createDoctor,getAllDoctors,getParticularDoctor,deleteDoctor,updateAvailable };
