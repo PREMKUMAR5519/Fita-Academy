@@ -8,7 +8,7 @@ const {createPatient,getAllPatients,getParticularPatient,deletePatient} = requir
 
 router.post('/create',createPatient);
 router.get('/',getAllPatients);
-router.get('/:id',getParticularPatient)
+router.get('/:email',getParticularPatient)
 router.delete('/delete/:id',deletePatient)
 
 

@@ -31,7 +31,7 @@ async function getAllPatients(req, res) {
 
 //get particular patient data
 async function getParticularPatient(req,res){
-   const {email}= req.body;
+   const {email}= req.params;
    try {
     const patient = await Patient.findOne({email})
     res.json(patient)
