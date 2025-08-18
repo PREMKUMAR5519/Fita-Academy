@@ -7,7 +7,7 @@ const {createDoctor,getAllDoctors,getParticularDoctor,deleteDoctor,updateAvailab
 //create doctor
 router.post('/create', createDoctor);
 router.get('/', getAllDoctors);
-router.get('/doctor',getParticularDoctor)
+router.post('/doctor',getParticularDoctor)
 router.delete('/delete/:id', deleteDoctor)
 router.put('/update/:id',updateAvailable)
 

@@ -6,13 +6,14 @@ import { jwtDecode } from 'jwt-decode'
 function Patient() {
   const [popup, setPopup] = useState(false)
   const [doctors, setDoctors] = useState()
-  const [patient, setPatient] = useState()
+  const [patient, setPatient] = useState(null)
   const [date, setDate] = useState()
   const [time, setTime] = useState()
   const [selectedDoctor, setSelectedDoctor] = useState([])
   const [newAppointment, setNewAppointment] = useState({
 
   })
+  const [previousAppointments,setPreviousAppointments]= useState()
 
   useEffect(() => {
     async function getPatientData() {
@@ -46,7 +47,6 @@ function Patient() {
   }, [])
 
 
-  console.log(doctors)
 
   //submit 
   async function handleSubmit() {
@@ -61,37 +61,80 @@ function Patient() {
         appointmentTime: time
       })
       console.log("result", response.data)
+      setPopup(false)
 
     } catch (error) {
       console.log(error)
     }
   }
-  console.log(selectedDoctor)
+  function handleDoctorinputchange(id) {
+    const findDoctor = doctors.find((e) => e._id == id)
+    if (findDoctor) {
+      setSelectedDoctor(findDoctor)
+    }
+  }
 
+   useEffect(()=>{
+    async function getappointmentbypatientId(){
+      if(!patient){
+        return
+      }
+      try {
+        const response = await axios.get(`http://localhost:3000/appointment/bypatient/${patient?._id}`)
+        setPreviousAppointments(response.data)
+      } catch (error) {
+         console.log(error)
+      }
+    }
+    getappointmentbypatientId()
+   },[patient])
   return (
     <div className='patient-main'>
       <button onClick={() => setPopup(true)}>Book Appointment</button>
-      <div className='form-container'>
-        <div className='container'>
-          <h2>Book Appointment</h2>
-          <input type="date" name="" value={date} onChange={(e) => { setDate(e.target.value) }} id="" />
-          <label >Time:</label>
-          <select name="" id="" onChange={(e) => { setTime(e.target.value) }}>
-            <option value="morning" >Morning</option>
-            <option value="afternoon" >Afternoon</option>
-          </select>
-          <label htmlFor="">Choose doctor</label>
-          <select name="" id="" onChange={(e) => setSelectedDoctor(e.target.value)}>
-            {doctors?.map((doctor) => (
+      {popup ? (
+        <div className='form-container'>
+          <div className='container'>
+            <button className='close-popup' onClick={()=>{setPopup(false)}}>X</button>
 
-              <option key={doctor._id}  >{doctor?.name}</option>
-
-            ))}
-          </select>
-          <button onClick={handleSubmit}>Submit</button>
+            <h2>Book Appointment</h2>
+            <input type="date" name="" value={date} onChange={(e) => { setDate(e.target.value) }} id="" />
+            <label >Time:</label>
+            <select name="" id="" onChange={(e) => { setTime(e.target.value) }}>
+              <option value="morning" >Morning</option>
+              <option value="afternoon" >Afternoon</option>
+            </select>
+            <label htmlFor="">Choose doctor</label>
+            <select name="" id="" onChange={(e) => handleDoctorinputchange(e.target.value)}>
+              {doctors?.map((doctor) => (
+                <option key={doctor._id} value={doctor._id} >{doctor.name}</option>
+              ))}
+            </select>
+            <button onClick={handleSubmit}>Submit</button>
+          </div>
         </div>
-      </div>
-
+      ) : null}
+    <div>
+      {previousAppointments?.map((appointment)=>(
+        <div style={{border:`1px solid ${appointment?.status =='pending'? 'yellow':"green"}`}}>
+          <div >
+            <span>Doctor name:</span>
+            <span>{appointment?.doctorName}</span>
+          </div>
+          <div>
+            <span>date:</span>
+            <span>{appointment.appointmentDate}</span>
+          </div>
+           <div>
+            <span>time:</span>
+            <span>{appointment.appointmentTime}</span>
+          </div>
+          <div>
+            <span>status:</span>
+            <span>{appointment.status}</span>
+          </div>
+        </div>
+      ))}
+    </div>
     </div>
   )
 }

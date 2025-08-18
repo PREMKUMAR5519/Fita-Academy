@@ -60,4 +60,29 @@ async function deleteAppointment(req,res){
     res.json('something went wrong')
   }
 }
-module.exports ={createAppointment,getAllAppointments,getAppointment,updateStatus,deleteAppointment}
+
+
+//get appointments by patient_id
+
+
+async function getAppointmentbyPatientid(req,res) {
+  const {id} = req.params;
+  try {
+    const allAppointments = await Appointment.find({patient_id:id})
+    res.status(200).json(allAppointments)
+  } catch (error) {
+    res.status(400).json({message:"error"})
+  }
+  
+}
+async function getAppointmentbydoctorid(req,res) {
+  const {id} = req.params;
+  try {
+    const allAppointments = await Appointment.find({doctor_id:id})
+    res.status(200).json(allAppointments)
+  } catch (error) {
+    res.status(400).json({message:"error"})
+  }
+  
+}
+module.exports ={createAppointment,getAllAppointments,getAppointment,updateStatus,deleteAppointment,getAppointmentbydoctorid,getAppointmentbyPatientid}

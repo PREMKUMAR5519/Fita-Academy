@@ -15,4 +15,18 @@
 .container{
     background-color: white;
     padding: 20px;
+    position: relative;
+}
+.close-popup{
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.616);
+    color: white;
+    cursor: pointer;
+
 }
