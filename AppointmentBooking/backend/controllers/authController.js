@@ -42,6 +42,33 @@ async function userLogin(req,res){
     }
 }
 
+
+async function getAllUsers(req,res){
+    try {
+    const allUsers = await User.find({})
+    res.json(allUsers)
+    } catch (error) {
+        res.status(400).json({"message":error}) 
+    }
+}
+
+
+async function updateUsers(req,res){
+    const {id} = req.params;
+    const {role} = req.body;
+
+    try {
+     const updateuser = await User.findByIdAndUpdate({_id:id},{role})
+     res.json(updateuser)
+
+    res.json(allUsers)
+    } catch (error) {
+        res.status(400).json({"message":error}) 
+    }
+}
+
+
+
 async function test(params) {
     try {
         res.json("working")
@@ -49,4 +76,4 @@ async function test(params) {
         
     }
 }
-module.exports ={userLogin,userRegister,test}
+module.exports ={userLogin,userRegister,test,getAllUsers,updateUsers}

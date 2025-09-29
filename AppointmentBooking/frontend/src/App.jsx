@@ -7,6 +7,7 @@ import Doctor from './pages/doctor/Doctor'
 import ProtectedRoute from './ProtectedRoute'
 import Home from './pages/home/Home'
 import MainLayout from './MainLayout'
+import Admin from './pages/admin/Admin'
 function App() {
   return (
     <>
@@ -26,7 +27,10 @@ function App() {
             <Route element={<ProtectedRoute allowaccess={'doctor'} />}>
               <Route path='/doctor' element={<Doctor />} />
             </Route>
-
+             <Route element={<ProtectedRoute allowaccess={'admin'} />}>
+              <Route path='/admin' element={<Admin />} />
+            </Route>
+       
           </Routes>
         </MainLayout>
       </Router>

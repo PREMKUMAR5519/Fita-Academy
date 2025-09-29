@@ -37,6 +37,9 @@ function Login() {
               if(extractedToken?.role == 'doctor'){
                 navigate('/doctor')
             }
+            if(extractedToken?.role == 'admin'){
+                navigate('/admin')
+            }
         } catch (error) {
             setError(error.response.data.message)
         }

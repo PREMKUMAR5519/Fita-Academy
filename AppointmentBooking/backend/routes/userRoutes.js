@@ -1,4 +1,4 @@
-const {userRegister,userLogin,test} = require('../controllers/authController');
+const {userRegister,userLogin,test,getAllUsers,updateUsers} = require('../controllers/authController');
 
 const express = require('express');
 const router = express.Router();
@@ -8,6 +8,9 @@ router.post('/register', userRegister);
 
 //user login
 router.post('/login', userLogin);
+
+router.get('/allusers',getAllUsers)
+router.put('/updateuser/:id',updateUsers)
 
 
 router.get('/',test)
